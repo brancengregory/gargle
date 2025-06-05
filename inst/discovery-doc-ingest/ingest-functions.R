@@ -14,7 +14,7 @@ get_discovery_ids <- function() {
   apis <- httr::content(
     httr::GET("https://www.googleapis.com/discovery/v1/apis")
   )
-  map_chr(apis[["items"]], "id")
+  map_chr(apis[["items"]], function(x) x[["id"]])
 }
 
 #' Form the URL for a Discovery Document
